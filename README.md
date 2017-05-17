@@ -1,6 +1,6 @@
 Regroupement des Projec realiser dans le cadre 42 en C
 
-les sujet sont present a la racine des projet repectife
+les sujet sont present a la racine des projet
 
 Unix:
 ft_ls : commande unix ls

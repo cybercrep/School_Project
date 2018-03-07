@@ -6,7 +6,7 @@
 #    By: tifuzeau <tifuzeau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/07 02:15:44 by tifuzeau          #+#    #+#              #
-#    Updated: 2016/09/08 02:04:44 by tifuzeau         ###   ########.fr        #
+#    Updated: 2017/12/04 14:42:58 by timfuzea    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,17 +66,19 @@ OK		=\033[0;33mOK\033[0;0m\n\n
 #									REGLE                                      #
 # **************************************************************************** #
 
-all: $(LIB_SRC) $(OBJ_PATH) $(NAME)
+all: $(LIB_SRC) $(LIB_MLX) $(OBJ_PATH) $(NAME)
 
 $(NAME): $(OBJ)
 	@printf "Creation de $(NAME):"
-	@$(CC) $(CC_FLAG) -lmlx -framework OpenGL -framework AppKit $(LIB_SRC) $^ -o $@
+	@$(CC) $(CC_FLAG) ./minilibx_macos/libmlx.a -framework OpenGL -framework AppKit $(LIB_SRC) $^ -o $@
 	@printf " $(OK)"
 
 $(LIB_SRC): $(LIB_PATH)
 	@printf "Creation de $(LIB_NAME).a: $(START)"
 	@make -C $(LIB_PATH) all
 	@printf "Creation de $(LIB_NAME).a: $(END)"
+
+$(LIB_MLX): $(MLX_PAT)
 
 $(OBJ_PATH):
 	@printf "Creation de $(OBJ_PATH):"

@@ -6,7 +6,7 @@
 #    By: tifuzeau <tifuzeau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/28 14:00:16 by tifuzeau          #+#    #+#              #
-#    Updated: 2018/01/15 22:47:01 by timfuzea    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/07 14:34:57 by timfuzea    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ NAME	= fillit
 PWD			:= $(shell pwd)
 
 LIB_PATH= ./libft/
-INC_PATH= $(PWD)/
-OBJ_PATH= $(PWD)/
-SRC_PATH= $(PWD)/
+INC_PATH= $(PWD)/includes/
+OBJ_PATH= $(PWD)/obj/
+SRC_PATH= $(PWD)/srcs/
 
 # **************************************************************************** #
 #									NAME                                       #
@@ -84,7 +84,7 @@ $(OBJ_PATH):
 	@printf " $(OK)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INC_PATH)
-	@printf "Creation de $@:"
+	@printf "Creation de $(notdir $@):"
 	@$(CC) $(CC_FLAG) $(INC) -o $@ -c $< 
 	@printf " done\n"
 
@@ -101,7 +101,7 @@ fclean: clean
 	@make -C $(LIB_PATH) fclean
 	@printf "Fclean $(LIB_NAME): $(END)"
 	@printf "Clean de $(NAME):"
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(OBJ_PATH)
 	@printf " $(OK)"
 
 re: fclean all
